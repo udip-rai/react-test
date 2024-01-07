@@ -1,13 +1,14 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 export type QuestionPatternSchema = {
   question_images: string[];
   answer_image?: string;
+  real_child?: ReactNode;
 };
 
 const QuestionPattern: React.FC<QuestionPatternSchema> = (props) => {
   // Props
-  const { question_images, answer_image } = props;
+  const { question_images, answer_image, real_child } = props;
 
   return (
     <div className="w-full h-full">
@@ -30,6 +31,8 @@ const QuestionPattern: React.FC<QuestionPatternSchema> = (props) => {
           {answer_image && <img src={answer_image} />}
         </div>
       </div>
+
+      {real_child && real_child}
     </div>
   );
 };

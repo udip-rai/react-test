@@ -10,3 +10,4 @@ export { default as question5_png } from "./questions/question5.png";
 // answer imports
 export { default as answer1_png } from "./answers/answer1.png";
 export { default as answer2_png } from "./answers/answer2.png";
+export { default as answer4_png } from "./answers/answer4.png";
