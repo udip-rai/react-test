@@ -1,4 +1,4 @@
-import { answer1_png, question2_png } from "assets/images";
+import { answer2_png, question2_png } from "assets/images";
 import { QuestionPattern } from "helpers/components";
 import { detectWordsForQuestionTwo } from "./workings/q2";
 
