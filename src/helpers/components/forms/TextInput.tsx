@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type TextInputSchema = {
-  form: any;
-  common: any;
-};
+import * as css from "utils/css";
+import { FormInputSchema } from "utils/schemas/GlobalSchema";
 
-const TextInput: React.FC<TextInputSchema> = (props) => {
+const TextInput: React.FC<FormInputSchema> = (props) => {
   // Props
   const { common, form } = props;
 
@@ -22,12 +19,12 @@ const TextInput: React.FC<TextInputSchema> = (props) => {
         id={input}
         key={input}
         {...register(input)}
-        className="w-half h-[40px] px-5 max-w-[200px] rounded-md border-[1px] border-gray-400"
+        className={css.formInputCss}
         type="text"
         placeholder={placeholder}
         defaultValue={defaultValue && defaultValue}
       />
-      {errorMsg && <span className="text-red-400 text-xs">{errorMsg}</span>}
+      {errorMsg && <span className={css.errorMsgCss}>{errorMsg}</span>}
     </div>
   );
 };

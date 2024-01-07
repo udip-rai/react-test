@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type DateInputSchema = {
-  form: any;
-  common: any;
-};
+import * as css from "utils/css";
+import { FormInputSchema } from "utils/schemas/GlobalSchema";
 
-const DateInput: React.FC<DateInputSchema> = (props) => {
+const DateInput: React.FC<FormInputSchema> = (props) => {
   // Props
   const { common, form } = props;
 
@@ -22,12 +19,12 @@ const DateInput: React.FC<DateInputSchema> = (props) => {
         id={input}
         key={input}
         {...register(input)}
-        className="w-half h-[40px] px-5 max-w-[200px] rounded-md border-[1px] border-gray-400"
+        className={css.formInputCss}
         type="date"
         placeholder={placeholder}
         defaultValue={defaultValue && defaultValue}
       />
-      {errorMsg && <span className="text-red-400 text-xs">{errorMsg}</span>}
+      {errorMsg && <span className={css.errorMsgCss}>{errorMsg}</span>}
     </div>
   );
 };

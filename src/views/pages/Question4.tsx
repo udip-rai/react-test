@@ -12,26 +12,25 @@ import {
   useAppSelector,
 } from "helpers/hooks/useStoreHooks";
 import { setFormList } from "helpers/redux/_actions";
-import { btnClass } from "utils/constants";
+import { btnClass } from "utils/css";
 
 const Question4 = () => {
   // Redux
   const dispatch = useAppDispatch();
-  const { formList: storeList } = useAppSelector(
-    (state: RootState) => state.Global
-  );
+  const { formList: s } = useAppSelector((state: RootState) => state.Global);
 
   // React hook form
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(demoFormValidation) });
 
   // Action when form is submitted
   const onsubmit = (data: any) => {
-    console.log([data]);
-    dispatch(setFormList([data]));
+    dispatch(setFormList(data));
+    reset();
   };
 
   // Required props
@@ -56,17 +55,17 @@ const Question4 = () => {
         </form>
       </div>
       <div className="flex basis-1/3 p-5">
-        {!storeList.length ? (
+        {!s.length ? (
           "Please submit to get array"
         ) : (
           <div className="flex flex-col">
             <h1 className="font-bold">Details fetched from List:: </h1>
-            <p>First Name: {storeList[0].first_name}</p>
-            <p>Last Name: {storeList[0].last_name}</p>
-            <p>Age: {storeList[0].age}</p>
-            <p>Date of Birth: {storeList[0].dob}</p>
-            <p>Phone number: {storeList[0].phone}</p>
-            <p>Gender: {storeList[0].gender}</p>
+            <p>First Name: {s[s.length - 1].first_name}</p>
+            <p>Last Name: {s[s.length - 1].last_name}</p>
+            <p>Age: {s[s.length - 1].age}</p>
+            <p>Date of Birth: {s[s.length - 1].dob}</p>
+            <p>Phone number: {s[s.length - 1].phone}</p>
+            <p>Gender: {s[s.length - 1].gender}</p>
           </div>
         )}
       </div>
