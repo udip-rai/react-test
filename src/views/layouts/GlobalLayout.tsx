@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 const GlobalLayout = () => {
   return (
-    <div className="global-layout grid grid-rows-[70px_minmax(calc(100vh-70px-70px),1fr)_70px]">
+    <div className="global-layout grid grid-rows-[70px_minmax(calc(100vh-70px-70px),1fr)_70px] font-poppins">
       {/* Header section */}
       <Header />
 
