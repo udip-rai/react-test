@@ -1,15 +1,17 @@
 const Footer = () => {
   return (
     <footer className="footer px-5 bg-gray-200 flex justify-between items-center">
-      <span className="font-bold">All Rights Reserved &copy; Udip Rai</span>
+      <a
+        onClick={() => window.open("https://github.com/udip-rai")}
+        className="font-bold cursor-pointer hover:text-gray-700"
+      >
+        All Rights Reserved &copy; Udip Rai
+      </a>
 
       <div className="flex flex-col">
-        <p>
-          <span className="font-bold">Email:</span> udiprai28@gmail.com
-        </p>
-        <p>
-          <span className="font-bold">Contact:</span> 9862260806
-        </p>
+        <a href="mailto:udiprai28@gmail.com">
+          <span className="font-bold">Send Email:</span> @udiprai28
+        </a>
       </div>
     </footer>
   );

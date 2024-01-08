@@ -38,7 +38,7 @@ const Question4 = () => {
 
   const real_child = (
     <div className="flex">
-      <div className="flex basis-2/3 p-5">
+      <div className="flex flex-col basis-2/3 p-5">
         <form
           className="border-2 border-gray-800 bg-white min-w-[400px] p-5 grid grid-cols-3 gap-3"
           onSubmit={handleSubmit(onsubmit)}
@@ -59,7 +59,7 @@ const Question4 = () => {
           "Please submit to get array"
         ) : (
           <div className="flex flex-col">
-            <h1 className="font-bold">Details fetched from List:: </h1>
+            <h1 className="font-bold">Details fetched from List ::</h1>
             <p>First Name: {s[s.length - 1].first_name}</p>
             <p>Last Name: {s[s.length - 1].last_name}</p>
             <p>Age: {s[s.length - 1].age}</p>

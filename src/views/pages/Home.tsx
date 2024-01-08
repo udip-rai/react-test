@@ -1,5 +1,7 @@
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>Deployed in Netlify here: https://react-test-udip.netlify.app/</div>
+  );
 };
 
 export default Home;

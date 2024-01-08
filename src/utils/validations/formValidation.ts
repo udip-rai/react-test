@@ -1,12 +1,16 @@
 import * as yup from "yup";
-import { nameValidation, numberValidation } from "./yupValidation";
+import {
+  ageValidation,
+  nameValidation,
+  phoneNumberValidation,
+} from "./yupValidation";
 
 export const demoFormValidation = yup
   .object()
   .shape({
     first_name: nameValidation,
     last_name: nameValidation,
-    age: numberValidation,
-    phone: numberValidation,
+    age: ageValidation,
+    phone: phoneNumberValidation,
   })
   .required();

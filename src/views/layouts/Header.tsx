@@ -24,6 +24,12 @@ const Header = () => {
           </a>
         ))}
       </nav>
+      <a
+        className="hover:text-red-600"
+        href="https://react-test-udip.netlify.app/"
+      >
+        Demo here
+      </a>
     </header>
   );
 };

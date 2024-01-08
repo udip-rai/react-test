@@ -3,7 +3,7 @@ export const firstName = (form: any) => {
   const common = {
     input: "first_name",
     label: "First Name",
-    placeholder: "Udip...",
+    placeholder: "Min. 3 Max. 40",
     defaultValue: "",
   };
 
@@ -14,7 +14,7 @@ export const lastName = (form: any) => {
   const common = {
     input: "last_name",
     label: "Last Name",
-    placeholder: "Rai...",
+    placeholder: "Min. 3 Max. 40",
     defaultValue: "",
   };
 
@@ -25,7 +25,7 @@ export const age = (form: any) => {
   const common = {
     input: "age",
     label: "Age",
-    placeholder: "Udip...",
+    placeholder: "Min. 0 Max. 130",
     defaultValue: "",
   };
 
@@ -47,7 +47,7 @@ export const phone = (form: any) => {
   const common = {
     input: "phone",
     label: "Phone number",
-    placeholder: "980XXXXXXX",
+    placeholder: "Min. 10 Max. 15",
     defaultValue: "",
   };
 
