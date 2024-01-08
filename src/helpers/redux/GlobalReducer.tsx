@@ -31,7 +31,7 @@ type InitialStateSchema = {
   changedList: FormDetailSchema[];
   sortOption: any;
   // sortOption: "asc" | "desc";
-  searchOption: string;
+  searchInput: string;
   filterOption: "male" | "female" | "all";
 };
 
@@ -46,7 +46,7 @@ const initialState: InitialStateSchema = {
     phone: false,
     gender: false,
   },
-  searchOption: "",
+  searchInput: "",
   filterOption: "all",
 };
 
@@ -63,33 +63,25 @@ export const GlobalReducer = createSlice({
 
     // Clear local storage database
     clearLsCache: () => {
-      localStorage.removeItem("formList");
+      localStorage.removeItem("formList"); // not used atm, dont need to as well I presume
     },
 
     // Sort
     sortFormList: (state, action) => {
       const { field, isFlag } = action.payload;
 
-      state.sortOption = toggleSortOption({ ...state.sortOption }, field);
-      state.changedList = getSortMethod([...state.formList], field, isFlag);
-
-      // if (sortOption === "asc") {
-      //   state.formList = state.formList.filter(
-      //     (a: FormDetailSchema, b: FormDetailSchema) => a.name < b.name
-      //   );
-      // }
-
-      // if (sortOption === "desc") {
-      //   state.formList = state.formList.filter(
-      //     (a: FormDetailSchema, b: FormDetailSchema) => a.name > b.name
-      //   );
-      // }
+      state.searchInput = ""; // Clear search input
+      state.sortOption = toggleSortOption({ ...state.sortOption }, field); // Toggle sort
+      state.changedList = getSortMethod([...state.formList], field, isFlag); // Set changed list
     },
 
     // Search
     searchFormList: (state, action) => {
       const field = action.payload;
       const length = field.length;
+
+      // Update search input
+      state.searchInput = field;
 
       // Calculations
       const searchedItems = state.formList.filter(
@@ -101,7 +93,7 @@ export const GlobalReducer = createSlice({
           item.last_name.slice(0, length).toLowerCase() === field.toLowerCase()
       );
 
-      state.changedList = searchedItems;
+      state.changedList = searchedItems; // Set changed list
     },
 
     // Filter
@@ -113,8 +105,9 @@ export const GlobalReducer = createSlice({
         category === "all" ? item : item.gender === category
       );
 
-      state.filterOption = category;
-      state.changedList = filteredItems;
+      state.searchInput = ""; // Clear search input
+      state.filterOption = category; // Set filter category
+      state.changedList = filteredItems; // Set changed list
     },
   },
 });

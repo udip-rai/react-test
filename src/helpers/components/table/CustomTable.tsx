@@ -9,6 +9,7 @@ import { sortFormList } from "helpers/redux/_actions";
 import FilterSection from "./FilterSection";
 import SearchSection from "./SearchSection";
 import { toSnakeCase } from "utils/methods/stringMethods";
+import SortSection from "./SortSection";
 
 // Default headers
 const headers: string[] = [
@@ -20,7 +21,7 @@ const headers: string[] = [
   "Gender",
 ];
 
-// Custom td and th class
+// Custom TH
 const TH = ({ children, ...rest }: ChildrenSchema) => {
   // Redux
   const dispatch = useAppDispatch();
@@ -28,18 +29,21 @@ const TH = ({ children, ...rest }: ChildrenSchema) => {
 
   // Variables
   const field = toSnakeCase(children?.toString().toLowerCase());
+  const isFlag = sortOption[field];
 
   // Action when sort header is clicked
   const handleSort = () => {
-    dispatch(sortFormList({ field, isFlag: sortOption[field] }));
+    dispatch(sortFormList({ field, isFlag }));
   };
 
   return (
-    <th onClick={handleSort} {...rest} className={css.tableTH}>
+    <th onClick={handleSort} {...rest} className={css.tableTH(isFlag)}>
       {children}
     </th>
   );
 };
+
+// Custom TD class
 const TD = ({ children, ...rest }: ChildrenSchema) => (
   <td {...rest} className={css.tableTD}>
     {children}
@@ -60,9 +64,7 @@ const CustomTable = () => {
     <div className="custom-table flex flex-col gap-5">
       {/* Control section for the table */}
       <div className="flex justify-between items-center gap-3">
-        <span className="font-bold italic text-blue-500">
-          Please click on table headers to sort...
-        </span>
+        <SortSection />
         <div className="flex items-center gap-3">
           <SearchSection />
           <FilterSection />

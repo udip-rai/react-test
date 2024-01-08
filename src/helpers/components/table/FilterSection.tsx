@@ -1,3 +1,4 @@
+import { filter_icon_svg } from "assets/images";
 import { useBoxVisible } from "helpers/hooks/useBoxVisible";
 import {
   useAppDispatch,
@@ -23,7 +24,7 @@ const FilterSection = () => {
 
   // Css for filter item
   const getFilterItemCss = (item: string) => {
-    const defaultCss = "text-sm cursor-pointer hover:text-blue-600";
+    const defaultCss = "text-sm cursor-pointer hover:text-blue-600 font-medium";
     const color = item.toLowerCase() === filterOption ? "text-blue-600" : "";
 
     return `${defaultCss} ${color}`;
@@ -33,9 +34,18 @@ const FilterSection = () => {
     <div className="filter-section relative">
       <div
         onClick={() => setIsBoxVisible(true)}
-        className="text-blue-500 hover:text-blue-700 font-bold cursor-pointer"
+        className="text-blue-500 hover:text-blue-700 font-bold cursor-pointer flex items-center gap-1"
       >
-        Filter Options
+        <div className="flex w-[18px]">
+          <img
+            src={filter_icon_svg}
+            alt="Filter Icon"
+            width="100%"
+            height="100%"
+          />
+        </div>
+
+        <p>Filter Options</p>
       </div>
 
       {isBoxVisible && (

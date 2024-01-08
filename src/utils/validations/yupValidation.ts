@@ -10,6 +10,8 @@ export const ageValidation = yup
   .matches(/^[0-9]+$/, "Must be only digits")
   .test("", "Invalid age (at most 130)", (val) => Number(val) < 130);
 
+export const dobValidation = yup.string().required("Required field");
+
 export const phoneNumberValidation = yup
   .string()
   .matches(/^[0-9]+$/, "Must be only digits")
