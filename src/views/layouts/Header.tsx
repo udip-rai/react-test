@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { NavItemsSchema } from "utils/schemas/GlobalSchema";
 import { nav_items } from "./_props";
+import { DemoLink } from "helpers/components";
 
 const Header = () => {
   // Hooks
@@ -18,18 +19,15 @@ const Header = () => {
           <a
             key={href}
             href={href}
-            className={`${is_active_link(href)} hover:text-blue-600`}
+            className={`${is_active_link(href)} ${
+              label === "Home" ? "text-2xl pr-8" : ""
+            } hover:text-blue-600 font-medium`}
           >
             {label}
           </a>
         ))}
       </nav>
-      <a
-        className="hover:text-red-600"
-        href="https://react-test-udip.netlify.app/"
-      >
-        Demo here
-      </a>
+      <DemoLink title="Demo here" />
     </header>
   );
 };
